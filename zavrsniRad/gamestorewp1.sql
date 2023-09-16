@@ -38,7 +38,7 @@ create table narudzba(
 	datumObracuna datetime not null
 );
 
-create table narudzba_igra(
+create table stavka(
 	sifra int not null primary key identity(1,1),
 	igra_id int not null,
 	narudzba_id int not null,
@@ -49,8 +49,8 @@ create table narudzba_igra(
 
 alter table igra add foreign key(izdavac_id) references izdavac(sifra);
 alter table narudzba add foreign key(korisnik_id) references korisnik(sifra);
-alter table narudzba_igra add foreign key(igra_id) references igra(sifra);
-alter table narudzba_igra add foreign key(narudzba_id) references narudzba(sifra);
+alter table stavka add foreign key(igra_id) references igra(sifra);
+alter table stavka add foreign key(narudzba_id) references narudzba(sifra);
 
 select * from izdavac;
 insert into izdavac(naziv,drzava,webStranica)
